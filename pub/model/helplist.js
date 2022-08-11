@@ -21,8 +21,14 @@ const roles = {
         return result
     },
 	async regTeacher(args) {
-        let sql = 'UPDATE wxuser set isReg=1 where id= ?'
-        let params = [args.wx_id]
+		let sql = 'INSERT INTO teacher_requests (wx_id,department,teachername) value(?,?,?)'
+        let params = [args.wx_id, args.department, args.teachername]
+        let result = await db.query(sql, params)
+        return result
+    },
+	async submitFeedback(args) {
+		let sql = 'INSERT INTO user_feedbacks (wx_id,feedback) value(?,?)'
+        let params = [args.wx_id, args.feedback]
         let result = await db.query(sql, params)
         return result
     },
@@ -50,9 +56,9 @@ const roles = {
         let result = await db.query(sql, params)
         return result
     },
-    async confirm(id) {
-        let sql = 'update helplist set state = 3,com_time=now() where id = ?'
-        let params = [id]
+    async confirm(args) {
+        let sql = 'update helplist set state = 3,hours=?,com_time=now() where id = ?'
+        let params = [args.hours, args.id]
         let result = await db.query(sql, params)
         return result
     },

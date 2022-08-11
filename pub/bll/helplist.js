@@ -38,6 +38,12 @@ const roles = {
     let bkdata = await model.regTeacher(form);
     return com.filterReturn(result);
   },
+  async submitFeedback(ctx) {
+    let form = ctx.request.body;
+    let result = retCode.Success;
+    let bkdata = await model.submitFeedback(form);
+    return com.filterReturn(result);
+  },
   
   async updateState(ctx) {
 

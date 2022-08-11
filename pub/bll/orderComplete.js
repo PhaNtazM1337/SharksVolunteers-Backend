@@ -9,7 +9,7 @@ const app = {
     let result = retCode.Success;
     let order = (await hModel.getById(form.id))[0];
     if (order.state == 2) {
-      let bkdata = await hModel.confirm(form.id);
+      let bkdata = await hModel.confirm(form);
       if (bkdata.errno) {
         if (bkdata.errno == 1062) {
           result = retCode.Fail;

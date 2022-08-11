@@ -17,7 +17,7 @@ const roles = {
             args.cert,
             args.a_id,
             args.form_id,
-            args.stu_card
+            args.stu_card,
         ];
         let result = await db.query(sql, params);
         return result;
@@ -38,8 +38,8 @@ const roles = {
         return result;
     },
     async updateWX(args) {
-        let sql = 'update wxuser set avatar_url=?,nick_name=?,phone=?,dphone=? where id=?'
-        let result = await db.query(sql, [args.avatar_url, args.nick_name, args.phone, args.dphone, args.id]);
+        let sql = 'update wxuser set avatar_url=?,nick_name=?,phone=?,dphone=?,email=? where id=?'
+        let result = await db.query(sql, [args.avatar_url, args.nick_name, args.phone, args.dphone, args.id, args.email]);
         return result;
     },
     async updateInfoState(args) {
@@ -58,7 +58,7 @@ const roles = {
     },
     async update(args) {
         let sql =
-            "UPDATE wxuser set nick_name=?,avatar_url=?,gender=? ,province=?,city=?,phone=?,dphone=? where id = ?";
+            "UPDATE wxuser set nick_name=?,avatar_url=?,gender=? ,province=?,city=?,phone=?,dphone=?,email=? where id = ?";
         let params = [
             args.nickName,
             args.avatarUrl,
@@ -67,7 +67,8 @@ const roles = {
             args.city,
             args.phone,
             args.dphone,
-            args.id
+			args.email,
+            args.id,
         ];
         let result = await db.query(sql, params);
         return result;

@@ -20,7 +20,7 @@ const development = {
   MYSQL: {
     host: "localhost",
     user: "root",
-    password: "Lz50302824!", //数据库密码
+    password: "Sharks2022!", //数据库密码
     port: "3306",
     database: "help", //数据库名
     timezone: "+08:00",

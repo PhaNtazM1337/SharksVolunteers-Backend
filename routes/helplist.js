@@ -30,6 +30,10 @@ router.post('/regTeacher', async (ctx, next) => {
     let result = await bll.regTeacher(ctx)
     ctx.body = result;
 })
+router.post('/submitFeedback', async (ctx, next) => {
+    let result = await bll.submitFeedback(ctx)
+    ctx.body = result;
+})
 router.post('/confirm', async (ctx, next) => {
     let result = await compl.complete(ctx)
     ctx.body = result;
